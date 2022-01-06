@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Money Tax Calculator 237</title>
+</head>
+<body>
+    <div class="main">
+        <label for="">
+            <input type="number" id="montant" placeholder="Montant">
+        </label>
+        <label for="">
+            <button type="button" id="valider" onclick="myFunction()">Calculer</button>
+        </label>
+        <p id="base"></p>
+        <p id="tax"></p>
+        <p id="tot"></p>
+        <p id="ttc"></p>
+        
+    </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("montant").value;
+          var frais;
+          var taxe;
+          var fraistot;
+          var ttc;
+          console.log(frais);
+          if (x < 50 ) {
+            frais = "Input not valid";
+          } else if(x>=50 && x<=6500) {
+            frais = x*0.03;
+          }else if(x>=6501 && x<=10000) {
+            frais = 180;
+          }else if(x>=10001 && x<=13500) {
+            frais = 300;
+          }else if(x>=13501 && x<=25000) {
+            frais = 350;
+          }else if(x>=25001 && x<=50000) {
+            frais = 700;
+          }else if(x>=50001 && x<=80000) {
+            frais = 1350;
+          }else{
+              frais=1000;
+          }
+
+          
+            taxe=x*0.002;
+            fraistot=frais+taxe;
+            ttc=parseFloat(x)+parseFloat(fraistot);
+            document.getElementById("base").innerHTML = "Les frais de base s'élèvent à : "+frais+" FCFA"; 
+            document.getElementById("tax").innerHTML = "La taxe s'élève à: "+ taxe+ " FCFA";
+            document.getElementById("tot").innerHTML = "Les frais totaux s'élèvent à: "+ fraistot + " FCFA";
+            document.getElementById("ttc").innerHTML = "Vous devrez donc avoir au moins: "+ ttc+ " FCFA <br> dans votre compte pour pouvoir retirer <br>"+x+" FCFA .";
+          
+
+
+        }
+        </script>
+        
+    
+</body>
+</html>
